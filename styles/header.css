@@ -1,0 +1,257 @@
+.header {
+    background: url('../bg/bg-chess-mob.jpg') 100% / cover no-repeat;
+    padding: 20px 16px 291px;
+}
+
+.header__left {
+    max-width: 100%;
+}
+
+.header__link {
+    color: #595653;
+    font-family: "Golos Text";
+    font-weight: bold;
+    margin-bottom: 40px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.header__link span {
+    max-width: 120px;
+    font-size: 14px;
+    line-height: 1.08;
+    text-transform: uppercase;
+}
+
+.header__title {
+    color: #313131;
+    text-transform: uppercase;
+    font-size: 36px;
+    line-height: 1.1;
+    letter-spacing: 1px;
+    font-weight: 400;
+}
+
+.header__title_subtitle {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #313131;
+}
+
+.header__text {
+    color: #313131;
+    font-size: 16px;
+    line-height: 1.3;
+    text-align: center;
+    font-family: "Golos Text";
+    margin-bottom: 32px;
+}
+
+.header__btns {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 14px;
+}
+
+.header__btn {
+    width: 100%;
+    padding: 14px 20px;
+    text-align: center;
+    font-size: 16px;
+    line-height: 1.3;
+    font-family: "Golos Text";
+    border-radius: 66px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.header__btn_sup {
+    color: #fff;
+    background-color: #1F1F1F;
+    outline: 2px solid #1F1F1F;
+}
+
+.header__btn_details {
+    color: #1F1F1F;
+    background-color: #fff;
+    outline: 2px solid #fff;
+}
+
+.running-line {
+    width: 100%;
+    overflow: hidden;
+    display: flex;
+    gap: 10px;
+    background-color: #F54932;
+    padding: 12px 0;
+}
+
+.scroll-content {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    animation: scroll-right 18s linear infinite;
+    white-space: nowrap;
+}
+
+@keyframes scroll-right {
+    0% {
+        transform: translateX(0);
+    }
+
+    100% {
+        transform: translateX(-100%);
+    }
+}
+
+.scroll-content__phrase {
+    color: #fff;
+    line-height: 1.1;
+    font-size: 16px;
+    text-transform: uppercase;
+    white-space: nowrap;
+}
+
+.scroll-content__spot {
+    width: 5px;
+    height: 5px;
+    background-color: #fff;
+    border-radius: 50%;
+    flex-shrink: 0;
+}
+
+@media (min-width: 768px) {
+    .header {
+        padding: 30px 40px 60px;
+        background-size: 100% 100%;
+        background: url('../bg/bg-chess.png') 100% / cover no-repeat;
+    }
+
+    .header__link span {
+        max-width: 148px;
+        font-size: 16px;
+    }
+
+    .header__title {
+        font-size: 48px;
+        letter-spacing: 2px;
+    }
+
+    .header__title_subtitle {
+        margin-bottom: 24px;
+    }
+
+    .header__text {
+        font-size: 18px;
+        margin-bottom: 40px;
+    }
+
+    .header__btns {
+        flex-direction: row;
+        gap: 16px;
+    }
+
+    .header__btn {
+        padding: 16px 32px;
+        width: 50%;
+    }
+
+    .header__btn_details {
+        outline: 2px solid #1F1F1F;
+        background-color: transparent;
+    }
+
+    .running-line {
+        padding: 14px 0;
+    }
+
+    .scroll-content {
+        gap: 14px;
+        animation-duration: 18s;
+    }
+
+    .scroll-content__phrase {
+        font-size: 19px;
+    }
+
+    .scroll-content__spot {
+        width: 6px;
+        height: 6px;
+    }
+}
+
+@media (min-width: 1024px) {
+    .header {
+        padding: 26px calc(50% - 1222px / 2) 132px;
+    }
+
+    .header__left {
+        max-width: 542px;
+    }
+
+    .header__link {
+        margin-bottom: 62px;
+    }
+
+    .header__link span {
+        font-size: 16.65px;
+    }
+
+    .header__title {
+        font-size: 60px;
+    }
+
+    .header__title_subtitle {
+        text-align: center;
+        margin-bottom: 24px;
+    }
+
+    .header__text {
+        text-align: center;
+        margin-bottom: 40px;
+    }
+
+    .header__btn {
+        padding: 16px 49px;
+    }
+
+    .running-line {
+        padding: 18px 0;
+    }
+
+    .scroll-content {
+        gap: 15px;
+        animation-duration: 20s;
+    }
+
+    .scroll-content__phrase {
+        font-size: 22px;
+    }
+}
+
+@media (min-width: 1440px) {
+    .header {
+        padding: 26px calc(50% - 1222px / 2) 132px;
+    }
+}
+
+@media (hover: hover) {
+    .header__btn_sup:hover {
+        background-color: #FBCE51;
+        outline-color: #FBCE51;
+        color: #1F1F1F;
+    }
+
+    .header__btn_details:hover {
+        background-color: #1F1F1F;
+        color: #fff;
+        outline-color: #1F1F1F;
+    }
+
+    .scroll-content:hover {
+        animation-play-state: paused;
+    }
+}
