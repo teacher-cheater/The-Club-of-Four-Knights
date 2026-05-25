@@ -36,7 +36,6 @@
 @media (min-width: 768px) {
     .tournament {
         gap: 32px;
-        margin-bottom: 50px;
     }
 
     .tournament__text {
@@ -50,8 +49,6 @@
         display: flex;
         gap: 64px;
         align-items: center;
-        max-width: 1222px;
-        margin: 0 auto 60px;
     }
 
     .tournament__text {
@@ -69,10 +66,6 @@
 }
 
 @media (min-width: 1440px) {
-    .tournament {
-        margin-bottom: 80px;
-    }
-
     .tournament__text {
         font-size: 42px;
     }
