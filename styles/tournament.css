@@ -2,8 +2,6 @@
     display: grid;
     grid-template-columns: 1fr;
     gap: 24px;
-    margin-bottom: 40px;
-    padding: 0 16px;
 }
 
 .tournament__text {
@@ -23,7 +21,7 @@
 
 .tournament__image {
     width: 100%;
-    max-width: 400px;
+    max-width: 394px;
     margin: 0 auto;
     order: 2;
 }
@@ -39,7 +37,6 @@
     .tournament {
         gap: 32px;
         margin-bottom: 50px;
-        padding: 0 40px;
     }
 
     .tournament__text {
@@ -50,30 +47,29 @@
 
 @media (min-width: 1024px) {
     .tournament {
-        grid-template-columns: 1fr 1fr;
+        display: flex;
         gap: 64px;
         align-items: center;
         max-width: 1222px;
         margin: 0 auto 60px;
-        padding: 0 20px;
     }
 
     .tournament__text {
         text-align: left;
         font-size: 36px;
         order: 1;
+        flex: 1 1 calc((764 / 1366) * 100);
     }
 
     .tournament__image {
         max-width: 100%;
         order: 2;
-        margin: 0;
+        flex: 1 1 calc((394 / 1366) * 100);
     }
 }
 
 @media (min-width: 1440px) {
     .tournament {
-        gap: 80px;
         margin-bottom: 80px;
     }
 
