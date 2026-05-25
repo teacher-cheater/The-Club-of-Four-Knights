@@ -2,6 +2,7 @@
     display: grid;
     grid-template-columns: 1fr;
     gap: 24px;
+    padding: 0 20px;
 }
 
 .tournament__text {
@@ -27,9 +28,9 @@
 }
 
 .tournament__picture {
-    width: 100%;
+    /* width: 100%;
     height: auto;
-    display: block;
+    display: block; */
     object-fit: cover;
 }
 
@@ -47,26 +48,38 @@
 @media (min-width: 1024px) {
     .tournament {
         display: flex;
-        gap: 64px;
+        flex-direction: row;
+        gap: clamp(32px, 4.68%, 64px);
         align-items: center;
+        padding: 0;
     }
 
     .tournament__text {
+        flex: 1 1 55.9%;
         text-align: left;
-        font-size: 36px;
+        font-size: clamp(28px, 2.6vw, 36px);
         order: 1;
-        flex: 1 1 calc((764 / 1366) * 100);
+        min-width: 0;
     }
 
     .tournament__image {
-        max-width: 100%;
+        flex: 1 1 28.8%;
         order: 2;
-        flex: 1 1 calc((394 / 1366) * 100);
+        max-width: 100%;
     }
+
+    /* 
+    .tournament__picture {
+        width: 100%;
+        height: auto;
+        display: block;
+    } */
 }
 
 @media (min-width: 1440px) {
     .tournament__text {
         font-size: 42px;
+        padding: 0;
+
     }
 }
