@@ -3,11 +3,7 @@
     background-color: #fff;
 }
 
-.event__container {
-    max-width: 1222px;
-    margin: 0 auto;
-    padding: 0 20px;
-}
+.event__container {}
 
 .event__title {
     color: #313131;
@@ -33,8 +29,15 @@
     text-align: center;
 }
 
+
+.event__image {
+    width: 100%;
+}
+
 .event__info {
     flex: 1;
+    padding: 0 20px;
+
 }
 
 .event__table {
@@ -53,7 +56,6 @@
 
 .event__label,
 .event__value {
-    /* padding: 14px 0; */
     font-family: "Golos Text", sans-serif;
     font-size: 20px;
     line-height: 1.2;
@@ -165,12 +167,11 @@
     }
 
     /* .event__poster {
-        flex: 1 0 calc(474px / 1366px * 100%);
     }
-
+*/
     .event__info {
-        flex: 1 0 calc(704px / 1366px * 100%);
-    } */
+        padding: 0;
+    }
 
     .event__content {
         display: grid;
@@ -181,8 +182,6 @@
 
     .event__poster {
         position: relative;
-        /* margin-left: clamp(-20px, -3vw, -50px);
-        margin-top: clamp(-20px, -3vw, -50px); */
         margin-left: clamp(-29px, -3vw, -50px);
         margin-top: clamp(-4px, -3vw, -50px);
         text-align: start;
@@ -213,15 +212,3 @@
         width: 55%;
     }
 }
-
-/* 
-@media (hover: hover) {
-    .event__row:hover {
-        background-color: #f9f9f9;
-    }
-
-    .event__row:hover .event__label,
-    .event__row:hover .event__value {
-        color: #F54932;
-    }
-} */

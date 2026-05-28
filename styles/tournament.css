@@ -14,10 +14,24 @@
     letter-spacing: 1px;
     text-align: center;
     order: 1;
+    display: none;
 }
 
-.tournament__text span {
+.tournament__text-mobile {
+    display: block;
+    color: #313131;
+    text-transform: uppercase;
+    font-size: 28px;
+    line-height: 1.35;
+    font-weight: 400;
+    letter-spacing: 1px;
+    order: 1;
+}
+
+.tournament__text span,
+.tournament__text-mobile span {
     color: #F54932;
+    font-weight: bold;
 }
 
 .tournament__image {
@@ -29,6 +43,8 @@
 
 .tournament__picture {
     object-fit: cover;
+    width: 100%;
+    margin-bottom: 24.44px;
 }
 
 @media (min-width: 768px) {
@@ -37,8 +53,13 @@
     }
 
     .tournament__text {
+        display: flex;
         font-size: 36px;
         text-align: left;
+    }
+
+    .tournament__text_mobile {
+        display: none;
     }
 }
 
@@ -67,6 +88,7 @@
     .tournament__picture {
         width: 100%;
         height: auto;
+        margin-bottom: 0;
     }
 }
 
