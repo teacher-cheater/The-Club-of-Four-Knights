@@ -229,6 +229,7 @@
 
     .scroll-content__phrase {
         font-size: 22px;
+        line-height: 1;
     }
 }
 
