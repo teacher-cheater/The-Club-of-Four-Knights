@@ -1,3 +1,9 @@
 .main {
-    padding: 80px calc(50% - 1222px / 2) 140px;
+    padding: 48px 0 100px;
+}
+
+@media (min-width: 768px) {
+    .main {
+        padding: 80px calc(50% - 1222px / 2) 140px;
+    }
 }
