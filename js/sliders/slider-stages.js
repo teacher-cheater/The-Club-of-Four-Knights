@@ -1,22 +1,14 @@
-document.addEventListener('DOMContentLoaded', function () {
+export function initStagesSlider() {
     const slider = document.getElementById('stagesSlider');
 
-    console.log('slider:', slider);
-    if (slider) {
-        const slides = Array.from(slider.children);
-        console.log('Количество слайдов:', slides.length);
-        console.log('Дети слайдера:', slides);
-    }
+    if (!slider) return;
 
     const prevBtn = document.getElementById('stagesPrev');
     const nextBtn = document.getElementById('stagesNext');
     const dotsContainer = document.getElementById('stagesDots');
-
     const mobilePrevBtn = document.getElementById('stagesMobilePrev');
     const mobileNextBtn = document.getElementById('stagesMobileNext');
     const mobileDotsContainer = document.getElementById('stagesMobileDots');
-
-    if (!slider) return;
 
     let currentIndex = 0;
     let slides = Array.from(slider.children);
@@ -92,7 +84,7 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     if (prevBtn) {
-        prevBtn.addEventListener('click', function () {
+        prevBtn.addEventListener('click', () => {
             if (currentIndex > 0) {
                 currentIndex--;
                 updateSlider();
@@ -101,7 +93,7 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     if (nextBtn) {
-        nextBtn.addEventListener('click', function () {
+        nextBtn.addEventListener('click', () => {
             if (currentIndex < totalSlides - 1) {
                 currentIndex++;
                 updateSlider();
@@ -110,7 +102,7 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     if (mobilePrevBtn) {
-        mobilePrevBtn.addEventListener('click', function () {
+        mobilePrevBtn.addEventListener('click', () => {
             if (currentIndex > 0) {
                 currentIndex--;
                 updateSlider();
@@ -119,7 +111,7 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     if (mobileNextBtn) {
-        mobileNextBtn.addEventListener('click', function () {
+        mobileNextBtn.addEventListener('click', () => {
             if (currentIndex < totalSlides - 1) {
                 currentIndex++;
                 updateSlider();
@@ -128,7 +120,7 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     let isScrolling = false;
-    slider.addEventListener('scroll', function () {
+    slider.addEventListener('scroll', () => {
         if (isScrolling) return;
         isScrolling = true;
         requestAnimationFrame(() => {
@@ -152,7 +144,7 @@ document.addEventListener('DOMContentLoaded', function () {
     });
 
     let resizeTimeout;
-    window.addEventListener('resize', function () {
+    window.addEventListener('resize', () => {
         clearTimeout(resizeTimeout);
         resizeTimeout = setTimeout(() => {
             updateSlider();
@@ -165,4 +157,4 @@ document.addEventListener('DOMContentLoaded', function () {
     setTimeout(() => {
         slider.scrollLeft = 0;
     }, 100);
-});
+}
