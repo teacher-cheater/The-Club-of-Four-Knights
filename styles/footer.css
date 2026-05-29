@@ -1,0 +1,19 @@
+.footer {
+    padding: 40px 0 60px;
+    background-color: #E9DED4;
+}
+
+.footer__text {
+    color: #313131;
+    font-family: "Golos Text", sans-serif;
+    line-height: 1.2;
+    font-size: 16px;
+    opacity: 60%;
+}
+
+
+@media (min-width: 768px) {
+    .footer {
+        padding: 40px calc(50% - 1222px / 2) 72px;
+    }
+}
