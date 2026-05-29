@@ -1,4 +1,3 @@
-/* ===== Базовые стили (Mobile First) ===== */
 .participants {
     padding: 40px 16px;
     background-color: #fff;
@@ -25,7 +24,6 @@
     line-height: 1.1;
 }
 
-/* Навигация */
 .participants__nav {
     display: flex;
     align-items: center;
