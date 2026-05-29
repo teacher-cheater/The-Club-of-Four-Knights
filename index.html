@@ -9,10 +9,11 @@
         <link rel="stylesheet" href="./styles/main.css" />
         <link rel="stylesheet" href="./styles/tournament.css" />
         <link rel="stylesheet" href="./styles/event.css" />
+        <link rel="stylesheet" href="./styles/stages.css" />
         <title>Клуб четырех коней</title>
     </head>
     <body>
-        <header class="header">
+        <header class="header" style="display: none">
             <div class="header__left">
                 <a class="header__link" href="#">
                     <img src="./logo/logo.svg" alt="logo" />
@@ -37,7 +38,7 @@
             </div>
             <div class="header__right"></div>
         </header>
-        <section class="running-line">
+        <section class="running-line" style="display: none">
             <div class="scroll-content">
                 <div class="scroll-content__phrase">
                     Дело помощи утопающим — дело рук самих утопающих!
@@ -54,10 +55,13 @@
             </div>
         </section>
         <main class="main">
-            <section class="tournament">
+            <section class="tournament" style="display: none">
                 <h2 class="tournament__text">
                     Чтобы поддержать Международный васюкинский турнир посетите
                     лекцию на тему: <span>«Плодотворная дебютная идея»</span>
+                </h2>
+                <h2 class="tournament__text-mobile">
+                    Чтобы поддержать Международный васюкинский турнир
                 </h2>
                 <div class="tournament__image">
                     <img
@@ -66,8 +70,12 @@
                         class="tournament__picture"
                     />
                 </div>
+                <h2 class="tournament__text-mobile">
+                    Посетите лекцию на тему:
+                    <span>«Плодотворная дебютная идея»</span>
+                </h2>
             </section>
-            <section class="event">
+            <section class="event" style="display: none">
                 <div class="event__container">
                     <div class="event__content">
                         <div class="event__poster">
@@ -130,6 +138,94 @@
                                 Михельсону
                             </p>
                         </div>
+                    </div>
+                </div>
+            </section>
+            <section class="stages">
+                <div class="stages__container">
+                    <div class="stages__header">
+                        <h2 class="stages__title">
+                            Этапы преобразования Васюков
+                        </h2>
+                        <p class="stages__subtitle">
+                            Будущие источники обогащения васюкинцев
+                        </p>
+                    </div>
+
+                    <div class="stages__content">
+                        <ol class="stages__list">
+                            <li class="stages__item-1">
+                                Строительство железнодорожной магистрали
+                                Москва-Васюки
+                            </li>
+                            <li class="stages__item-2">
+                                Открытие фешенебельной гостиницы «Проходная
+                                пешка» и других небоскрёбов
+                            </li>
+                            <li class="stages__item-3">
+                                Поднятие сельского хозяйства в радиусе на тысячу
+                                километров: производство овощей, фруктов, икры,
+                                шоколадных конфет
+                            </li>
+                            <li class="stages__item-4">
+                                Строительство дворца для турнира
+                            </li>
+                            <li class="stages__item-5">
+                                Размещение гаражей для гостевого автотранспорта
+                            </li>
+                            <li class="stages__item-6">
+                                Постройка сверхмощной радиостанции для передачи
+                                всему миру сенсационных результатов
+                            </li>
+                            <li class="stages__item-7">
+                                <div class="stages__inner-text">
+                                    Создание аэропорта «Большие Васюки» с
+                                    регулярным отправлением почтовых самолётов и
+                                    дирижаблей во все концы света, включая
+                                    Лос-Анжелос и Мельбурн
+                                </div>
+                                <div class="stages__inner-img"></div>
+                            </li>
+                        </ol>
+                        <div class="stages__inner-mobile-img"></div>
+                        <ol class="stages__list-mobile">
+                            <li class="stages__item-mobile-1">
+                                <div>
+                                    Строительство железнодорожной магистрали
+                                    Москва-Васюки
+                                </div>
+                                <div>
+                                    Открытие фешенебельной гостиницы «Проходная
+                                    пешка» и других небоскрёбов
+                                </div>
+                            </li>
+                            <li class="stages__item-mobile-3">
+                                <div>
+                                Поднятие сельского хозяйства в радиусе на тысячу
+                                километров: производство овощей, фруктов, икры,
+                                шоколадных конфет
+                                </div>
+                            </li>
+                            <li class="stages__item-mobile-5">
+                                <div>Строительство дворца для турнира</div>
+                                <div>Размещение гаражей для гостевого автотранспорта</div>
+                            </li>
+                            </li>
+                            <li class="stages__item-mobile-6">
+                                <div>
+                                Постройка сверхмощной радиостанции для передачи
+                                всему миру сенсационных результатов
+                                </div>
+                            </li>
+                            <li class="stages__item-mobile-7">
+                                <div class="stages__inner-mobile-text">
+                                    Создание аэропорта «Большие Васюки» с
+                                    регулярным отправлением почтовых самолётов и
+                                    дирижаблей во все концы света, включая
+                                    Лос-Анжелос и Мельбурн
+                                </div>
+                            </li>
+                        </ol>
                     </div>
                 </div>
             </section>
