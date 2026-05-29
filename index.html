@@ -10,10 +10,10 @@
         <link rel="stylesheet" href="./styles/tournament.css" />
         <link rel="stylesheet" href="./styles/event.css" />
         <link rel="stylesheet" href="./styles/stages.css" />
-        <title>Клуб четырех коней</title>
+        <title>Клуб четырех коней</title>
     </head>
     <body>
-        <header class="header" >
+        <header class="header">
             <div class="header__left">
                 <a class="header__link" href="#">
                     <img src="./logo/logo.svg" alt="logo" />
@@ -38,7 +38,7 @@
             </div>
             <div class="header__right"></div>
         </header>
-        <section class="running-line" >
+        <section class="running-line">
             <div class="scroll-content">
                 <div class="scroll-content__phrase">
                     Дело помощи утопающим — дело рук самих утопающих!
@@ -55,7 +55,7 @@
             </div>
         </section>
         <main class="main">
-            <section class="tournament" >
+            <section class="tournament">
                 <h2 class="tournament__text">
                     Чтобы поддержать Международный васюкинский турнир посетите
                     лекцию на тему: <span>«Плодотворная дебютная идея»</span>
@@ -75,7 +75,7 @@
                     <span>«Плодотворная дебютная идея»</span>
                 </h2>
             </section>
-            <section class="event" >
+            <section class="event">
                 <div class="event__container">
                     <div class="event__content">
                         <div class="event__poster">
@@ -171,7 +171,9 @@
                                 Строительство&nbsp;дворца для&nbsp;турнира
                             </li>
                             <li class="stages__item-5">
-                                Размещение&nbsp;гаражей для&nbsp;гостевого <br> автотранспорта
+                                Размещение&nbsp;гаражей для&nbsp;гостевого
+                                <br />
+                                автотранспорта
                             </li>
                             <li class="stages__item-6">
                                 Постройка сверхмощной радиостанции для передачи
@@ -179,15 +181,16 @@
                             </li>
                             <li class="stages__item-7">
                                 <div class="stages__inner-text">
-                                    Создание аэропорта «Большие Васюки» с&nbsp;регулярным отправлением почтовых самолётов и
-                                    дирижаблей во все концы света, включая
-                                    Лос-Анжелос и Мельбурн
+                                    Создание аэропорта «Большие Васюки»
+                                    с&nbsp;регулярным отправлением почтовых
+                                    самолётов и дирижаблей во все концы света,
+                                    включая Лос-Анжелос и Мельбурн
                                 </div>
                                 <div class="stages__inner-img"></div>
                             </li>
                         </ol>
                         <div class="stages__inner-mobile-img"></div>
-                        <ol class="stages__list-mobile">
+                        <ol class="stages__list-mobile" id="stagesSlider">
                             <li class="stages__item-mobile-1">
                                 <div>
                                     Строительство железнодорожной магистрали
@@ -200,20 +203,22 @@
                             </li>
                             <li class="stages__item-mobile-3">
                                 <div>
-                                Поднятие сельского хозяйства в радиусе на тысячу
-                                километров: производство овощей, фруктов, икры,
-                                шоколадных конфет
+                                    Поднятие сельского хозяйства в радиусе на
+                                    тысячу километров: производство овощей,
+                                    фруктов, икры, шоколадных конфет
                                 </div>
                             </li>
                             <li class="stages__item-mobile-5">
                                 <div>Строительство дворца для турнира</div>
-                                <div>Размещение гаражей для гостевого автотранспорта</div>
-                            </li>
+                                <div>
+                                    Размещение гаражей для гостевого
+                                    автотранспорта
+                                </div>
                             </li>
                             <li class="stages__item-mobile-6">
                                 <div>
-                                Постройка сверхмощной радиостанции для передачи
-                                всему миру сенсационных результатов
+                                    Постройка сверхмощной радиостанции для
+                                    передачи всему миру сенсационных результатов
                                 </div>
                             </li>
                             <li class="stages__item-mobile-7">
@@ -225,10 +230,60 @@
                                 </div>
                             </li>
                         </ol>
+                        <div class="stages__mobile-nav">
+                            <button
+                                class="stages__mobile-prev"
+                                id="stagesMobilePrev"
+                                aria-label="Предыдущий"
+                            >
+                                <svg
+                                    width="10"
+                                    height="16"
+                                    viewBox="0 0 10 16"
+                                    fill="none"
+                                >
+                                    <path
+                                        d="M8 14L2 8L8 2"
+                                        stroke="currentColor"
+                                        stroke-width="2"
+                                        stroke-linecap="round"
+                                        stroke-linejoin="round"
+                                    />
+                                </svg>
+                            </button>
+
+                            <div
+                                class="stages__mobile-dots"
+                                id="stagesMobileDots"
+                            ></div>
+
+                            <button
+                                class="stages__mobile-next"
+                                id="stagesMobileNext"
+                                aria-label="Следующий"
+                            >
+                                <svg
+                                    width="10"
+                                    height="16"
+                                    viewBox="0 0 10 16"
+                                    fill="none"
+                                >
+                                    <path
+                                        d="M2 2L8 8L2 14"
+                                        stroke="currentColor"
+                                        stroke-width="2"
+                                        stroke-linecap="round"
+                                        stroke-linejoin="round"
+                                    />
+                                </svg>
+                            </button>
+                        </div>
                     </div>
                 </div>
             </section>
         </main>
         <footer class="footer"></footer>
+
+        <script src="./js/slider.js"></script>
     </body>
 </html>

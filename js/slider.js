@@ -1,17 +1,31 @@
 document.addEventListener('DOMContentLoaded', function () {
     const slider = document.getElementById('stagesSlider');
+
+    console.log('slider:', slider);
+    if (slider) {
+        const slides = Array.from(slider.children);
+        console.log('Количество слайдов:', slides.length);
+        console.log('Дети слайдера:', slides);
+    }
+
     const prevBtn = document.getElementById('stagesPrev');
     const nextBtn = document.getElementById('stagesNext');
     const dotsContainer = document.getElementById('stagesDots');
 
-    if (!slider || !prevBtn || !nextBtn || !dotsContainer) return;
+    const mobilePrevBtn = document.getElementById('stagesMobilePrev');
+    const mobileNextBtn = document.getElementById('stagesMobileNext');
+    const mobileDotsContainer = document.getElementById('stagesMobileDots');
+
+    if (!slider) return;
 
     let currentIndex = 0;
     let slides = Array.from(slider.children);
     let totalSlides = slides.length;
     let dots = [];
+    let mobileDots = [];
 
     function updateSlider() {
+        if (slides.length === 0) return;
         const slideWidth = slides[0].offsetWidth;
         const gap = parseInt(getComputedStyle(slider).gap) || 16;
         const scrollPosition = currentIndex * (slideWidth + gap);
@@ -27,49 +41,98 @@ document.addEventListener('DOMContentLoaded', function () {
         dots.forEach((dot, index) => {
             dot.classList.toggle('active', index === currentIndex);
         });
+        mobileDots.forEach((dot, index) => {
+            dot.classList.toggle('active', index === currentIndex);
+        });
     }
 
     function updateButtons() {
-        prevBtn.disabled = currentIndex === 0;
-        nextBtn.disabled = currentIndex >= totalSlides - 1;
+        if (prevBtn && nextBtn) {
+            prevBtn.disabled = currentIndex === 0;
+            nextBtn.disabled = currentIndex >= totalSlides - 1;
+        }
+        if (mobilePrevBtn && mobileNextBtn) {
+            mobilePrevBtn.disabled = currentIndex === 0;
+            mobileNextBtn.disabled = currentIndex >= totalSlides - 1;
+        }
     }
 
     function createDots() {
-        dotsContainer.innerHTML = '';
-        dots = [];
+        if (dotsContainer) {
+            dotsContainer.innerHTML = '';
+            dots = [];
+            for (let i = 0; i < totalSlides; i++) {
+                const dot = document.createElement('div');
+                dot.classList.add('stages__dot');
+                if (i === currentIndex) dot.classList.add('active');
+                dot.addEventListener('click', () => {
+                    currentIndex = i;
+                    updateSlider();
+                });
+                dotsContainer.appendChild(dot);
+                dots.push(dot);
+            }
+        }
 
-        for (let i = 0; i < totalSlides; i++) {
-            const dot = document.createElement('div');
-            dot.classList.add('stages__dot');
-            if (i === currentIndex) dot.classList.add('active');
-            dot.addEventListener('click', () => {
-                currentIndex = i;
-                updateSlider();
-            });
-            dotsContainer.appendChild(dot);
-            dots.push(dot);
+        if (mobileDotsContainer) {
+            mobileDotsContainer.innerHTML = '';
+            mobileDots = [];
+            for (let i = 0; i < totalSlides; i++) {
+                const dot = document.createElement('div');
+                dot.classList.add('stages__mobile-dot');
+                if (i === currentIndex) dot.classList.add('active');
+                dot.addEventListener('click', () => {
+                    currentIndex = i;
+                    updateSlider();
+                });
+                mobileDotsContainer.appendChild(dot);
+                mobileDots.push(dot);
+            }
         }
     }
 
-    prevBtn.addEventListener('click', function () {
-        if (currentIndex > 0) {
-            currentIndex--;
-            updateSlider();
-        }
-    });
+    if (prevBtn) {
+        prevBtn.addEventListener('click', function () {
+            if (currentIndex > 0) {
+                currentIndex--;
+                updateSlider();
+            }
+        });
+    }
 
-    nextBtn.addEventListener('click', function () {
-        if (currentIndex < totalSlides - 1) {
-            currentIndex++;
-            updateSlider();
-        }
-    });
+    if (nextBtn) {
+        nextBtn.addEventListener('click', function () {
+            if (currentIndex < totalSlides - 1) {
+                currentIndex++;
+                updateSlider();
+            }
+        });
+    }
+
+    if (mobilePrevBtn) {
+        mobilePrevBtn.addEventListener('click', function () {
+            if (currentIndex > 0) {
+                currentIndex--;
+                updateSlider();
+            }
+        });
+    }
+
+    if (mobileNextBtn) {
+        mobileNextBtn.addEventListener('click', function () {
+            if (currentIndex < totalSlides - 1) {
+                currentIndex++;
+                updateSlider();
+            }
+        });
+    }
 
     let isScrolling = false;
     slider.addEventListener('scroll', function () {
         if (isScrolling) return;
         isScrolling = true;
         requestAnimationFrame(() => {
+            if (slides.length === 0) return;
             const slideWidth = slides[0].offsetWidth;
             const gap = parseInt(getComputedStyle(slider).gap) || 16;
             const scrollPosition = slider.scrollLeft;
