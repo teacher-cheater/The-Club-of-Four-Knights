@@ -70,8 +70,6 @@
         gap: clamp(32px, 4.68%, 64px);
         align-items: center;
         justify-content: center;
-        /* max-width: 1222px;
-        margin: 0 auto; */
         padding: 0 20px;
     }
 
@@ -89,18 +87,5 @@
         width: 100%;
         height: auto;
         margin-bottom: 0;
-    }
-}
-
-@media (min-width: 1366px) {
-    .tournament {
-        grid-template-columns: 764px 394px;
-        gap: 64px;
-        padding: 0;
-    }
-
-    .tournament__text {
-        font-size: 36px;
-        padding: 27px 0;
     }
 }
