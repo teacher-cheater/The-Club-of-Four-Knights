@@ -1,5 +1,5 @@
 .participants {
-    padding: 40px 16px;
+    padding: 77px 16px;
     background-color: #fff;
 }
 
@@ -82,7 +82,7 @@
 .participants__track {
     display: flex;
     gap: 20px;
-    padding: 0 16px;
+    /* padding: 0 16px; */
 }
 
 .participants__card {
@@ -142,6 +142,18 @@
     color: #fff;
 }
 
+.participants__nav--desktop {
+    display: none;
+}
+
+.participants__nav--mobile {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+    margin-top: 32px;
+}
+
 @media (min-width: 768px) {
     .participants__header {
         flex-direction: row;
@@ -191,5 +203,15 @@
 
     .participants__title-card {
         font-size: 20px;
+    }
+
+    .participants__nav--desktop {
+        display: flex;
+        align-items: center;
+        gap: 20px;
+    }
+
+    .participants__nav--mobile {
+        display: none;
     }
 }

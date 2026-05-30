@@ -293,7 +293,10 @@
                     <div class="participants__header">
                         <h2 class="participants__title">Участники турнира</h2>
 
-                        <div class="participants__nav">
+                        <div
+                            class="participants__nav participants__nav--desktop"
+                            id="participantsNavDesktop"
+                        >
                             <button
                                 class="participants__prev"
                                 id="participantsPrev"
@@ -449,6 +452,66 @@
                                 </button>
                             </article>
                         </div>
+                    </div>
+
+                    <div
+                        class="participants__nav participants__nav--mobile"
+                        id="participantsNavMobile"
+                    >
+                        <button
+                            class="participants__prev participants__prev--mobile"
+                            id="participantsPrevMobile"
+                            aria-label="Предыдущий"
+                        >
+                            <svg
+                                width="12"
+                                height="20"
+                                viewBox="0 0 12 20"
+                                fill="none"
+                            >
+                                <path
+                                    d="M10 2L2 10L10 18"
+                                    stroke="currentColor"
+                                    stroke-width="2"
+                                    stroke-linecap="round"
+                                />
+                            </svg>
+                        </button>
+                        <div
+                            class="participants__counter participants__counter--mobile"
+                            id="participantsCounterMobile"
+                        >
+                            <span
+                                class="participants__current"
+                                id="participantsCurrentMobile"
+                                >1</span
+                            >
+                            <span>/</span>
+                            <span
+                                class="participants__total"
+                                id="participantsTotalMobile"
+                                >6</span
+                            >
+                        </div>
+                        <button
+                            class="participants__next participants__next--mobile"
+                            id="participantsNextMobile"
+                            aria-label="Следующий"
+                        >
+                            <svg
+                                width="12"
+                                height="20"
+                                viewBox="0 0 12 20"
+                                fill="none"
+                            >
+                                <path
+                                    d="M2 2L10 10L2 18"
+                                    stroke="currentColor"
+                                    stroke-width="2"
+                                    stroke-linecap="round"
+                                />
+                            </svg>
+                        </button>
                     </div>
                 </div>
             </section>

@@ -1,10 +1,22 @@
 export function initParticipantsSlider() {
     const slider = document.getElementById('participantsSlider');
     const track = document.getElementById('participantsTrack');
-    const prevBtn = document.getElementById('participantsPrev');
-    const nextBtn = document.getElementById('participantsNext');
-    const currentSpan = document.querySelector('.participants__current');
-    const totalSpan = document.querySelector('.participants__total');
+
+    const prevBtnDesktop = document.getElementById('participantsPrev');
+    const nextBtnDesktop = document.getElementById('participantsNext');
+    const currentSpanDesktop = document.querySelector(
+        '.participants__nav--desktop .participants__current',
+    );
+    const totalSpanDesktop = document.querySelector(
+        '.participants__nav--desktop .participants__total',
+    );
+
+    const prevBtnMobile = document.getElementById('participantsPrevMobile');
+    const nextBtnMobile = document.getElementById('participantsNextMobile');
+    const currentSpanMobile = document.getElementById(
+        'participantsCurrentMobile',
+    );
+    const totalSpanMobile = document.getElementById('participantsTotalMobile');
 
     if (!slider || !track) return;
 
@@ -13,9 +25,11 @@ export function initParticipantsSlider() {
     let currentIndex = 0;
     let cardsPerView = getCardsPerView();
 
-    if (totalSpan) {
-        totalSpan.textContent = totalCards;
+    function setTotalCount() {
+        if (totalSpanDesktop) totalSpanDesktop.textContent = totalCards;
+        if (totalSpanMobile) totalSpanMobile.textContent = totalCards;
     }
+    setTotalCount();
 
     function getCardsPerView() {
         const width = window.innerWidth;
@@ -44,22 +58,25 @@ export function initParticipantsSlider() {
     function updateButtons() {
         const maxIndex = totalCards - cardsPerView;
 
-        if (prevBtn) {
-            prevBtn.disabled = currentIndex <= 0;
+        if (prevBtnDesktop && nextBtnDesktop) {
+            prevBtnDesktop.disabled = currentIndex <= 0;
+            nextBtnDesktop.disabled = currentIndex >= maxIndex;
         }
-        if (nextBtn) {
-            nextBtn.disabled = currentIndex >= maxIndex;
+
+        if (prevBtnMobile && nextBtnMobile) {
+            prevBtnMobile.disabled = currentIndex <= 0;
+            nextBtnMobile.disabled = currentIndex >= maxIndex;
         }
     }
 
     function updateCounter() {
-        if (currentSpan) {
-            currentSpan.textContent = currentIndex + 1;
-        }
+        const currentNumber = currentIndex + 1;
+        if (currentSpanDesktop) currentSpanDesktop.textContent = currentNumber;
+        if (currentSpanMobile) currentSpanMobile.textContent = currentNumber;
     }
 
-    if (prevBtn) {
-        prevBtn.addEventListener('click', () => {
+    if (prevBtnDesktop) {
+        prevBtnDesktop.addEventListener('click', function () {
             if (currentIndex > 0) {
                 currentIndex--;
                 updateSlider();
@@ -67,8 +84,27 @@ export function initParticipantsSlider() {
         });
     }
 
-    if (nextBtn) {
-        nextBtn.addEventListener('click', () => {
+    if (nextBtnDesktop) {
+        nextBtnDesktop.addEventListener('click', function () {
+            const maxIndex = totalCards - cardsPerView;
+            if (currentIndex < maxIndex) {
+                currentIndex++;
+                updateSlider();
+            }
+        });
+    }
+
+    if (prevBtnMobile) {
+        prevBtnMobile.addEventListener('click', function () {
+            if (currentIndex > 0) {
+                currentIndex--;
+                updateSlider();
+            }
+        });
+    }
+
+    if (nextBtnMobile) {
+        nextBtnMobile.addEventListener('click', function () {
             const maxIndex = totalCards - cardsPerView;
             if (currentIndex < maxIndex) {
                 currentIndex++;
@@ -78,7 +114,7 @@ export function initParticipantsSlider() {
     }
 
     let isScrolling = false;
-    slider.addEventListener('scroll', () => {
+    slider.addEventListener('scroll', function () {
         if (isScrolling) return;
         isScrolling = true;
         requestAnimationFrame(() => {
@@ -101,7 +137,7 @@ export function initParticipantsSlider() {
     });
 
     let resizeTimeout;
-    window.addEventListener('resize', () => {
+    window.addEventListener('resize', function () {
         clearTimeout(resizeTimeout);
         resizeTimeout = setTimeout(() => {
             const newCardsPerView = getCardsPerView();
