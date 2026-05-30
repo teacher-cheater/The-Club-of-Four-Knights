@@ -1,6 +1,7 @@
 .stages {
     padding: 40px 16px 16px 28px;
     background-color: #fff;
+    /* overflow-x: clip; */
 }
 
 .stages__header {
@@ -450,10 +451,6 @@
         grid-area: airport;
     }
 
-    .stages__inner-mobile-img {
-        display: none;
-    }
-
     .stages__inner-text {
         max-width: 446px;
     }
@@ -474,7 +471,7 @@
     }
 
     .stages__list-mobile {
-        display: none;
+        /* display: none; */
     }
 
     .stages__promo {
@@ -526,12 +523,36 @@
     }
 
     .stages__inner-img {
-        width: clamp(318.76px, 27.6vw, 376.64px);
-        height: clamp(118.84px, 14.6vw, 200px);
+        /* width: clamp(318.76px, 27.6vw, 376.64px); */
+        /* height: clamp(118.84px, 14.6vw, 200px);
         background: url("../bg/airplane.png") center / cover no-repeat;
         position: absolute;
         top: clamp(-85px, -7.4vw, -87px);
-        right: clamp(-64px, -5.2vw, -58px);
+        right: clamp(-64px, -5.2vw, -58px); */
+        /* width: 41.57vmin;
+        height: clamp(118.84px, 14.6vw, 200px);
+        background: url(../bg/airplane.png) center / cover no-repeat;
+        position: absolute;
+        top: clamp(-82px, -7.4vw, -87px);
+        right: clamp(-48px, -5.2vw, -58px); */
+    }
+
+    .stages__image {
+        position: absolute;
+        width: clamp(150px, 28.57vmin, 376.64px);
+        height: auto;
+        bottom: clamp(28px, -6vw, -87px);
+        right: clamp(-35px, -4vw, -58px);
+        z-index: 10;
+        pointer-events: none;
+    }
+
+    .stages__inner-mobile-img {
+        display: none;
+    }
+
+    .stages__list-mobile {
+        display: none;
     }
 
     .stages__promo {

@@ -78,6 +78,7 @@
     color: #1F1F1F;
     background-color: #fff;
     outline: 2px solid #fff;
+    opacity: 90%;
 }
 
 .running-line {
@@ -160,8 +161,8 @@
     }
 
     .header__btn_details {
-        outline: 2px solid #1F1F1F;
-        background-color: transparent;
+        /* outline: 2px solid #1F1F1F;
+        background-color: transparent; */
     }
 
     .running-line {
@@ -216,6 +217,10 @@
 
     .header__btn {
         padding: 16px 49px;
+    }
+
+    .header__btn_details {
+        opacity: 100%;
     }
 
     .running-line {
