@@ -21,13 +21,16 @@ export function initParticipantsSlider() {
     if (!slider || !track) return;
 
     let cards = Array.from(track.children);
-    let totalCards = cards.length;
-    let currentIndex = 0;
+    const originalCards = [...cards];
+    let totalRealCards = originalCards.length;
+    let currentRealIndex = 0;
     let cardsPerView = getCardsPerView();
+    let autoplayInterval = null;
+    let isInteracting = false;
 
     function setTotalCount() {
-        if (totalSpanDesktop) totalSpanDesktop.textContent = totalCards;
-        if (totalSpanMobile) totalSpanMobile.textContent = totalCards;
+        if (totalSpanDesktop) totalSpanDesktop.textContent = totalRealCards;
+        if (totalSpanMobile) totalSpanMobile.textContent = totalRealCards;
     }
     setTotalCount();
 
@@ -41,117 +44,123 @@ export function initParticipantsSlider() {
 
     function updateSlider() {
         if (cards.length === 0) return;
-
         const cardWidth = cards[0].offsetWidth;
         const gap = parseInt(getComputedStyle(track).gap) || 20;
-        const scrollPosition = currentIndex * (cardWidth + gap);
+        const scrollPosition = currentRealIndex * (cardWidth + gap);
 
         slider.scrollTo({
             left: scrollPosition,
             behavior: 'smooth',
         });
 
-        updateButtons();
         updateCounter();
     }
 
-    function updateButtons() {
-        const maxIndex = totalCards - cardsPerView;
-
-        if (prevBtnDesktop && nextBtnDesktop) {
-            prevBtnDesktop.disabled = currentIndex <= 0;
-            nextBtnDesktop.disabled = currentIndex >= maxIndex;
-        }
-
-        if (prevBtnMobile && nextBtnMobile) {
-            prevBtnMobile.disabled = currentIndex <= 0;
-            nextBtnMobile.disabled = currentIndex >= maxIndex;
-        }
-    }
-
     function updateCounter() {
-        const currentNumber = currentIndex + 1;
+        const currentNumber = currentRealIndex + 1;
         if (currentSpanDesktop) currentSpanDesktop.textContent = currentNumber;
         if (currentSpanMobile) currentSpanMobile.textContent = currentNumber;
     }
 
-    if (prevBtnDesktop) {
-        prevBtnDesktop.addEventListener('click', function () {
-            if (currentIndex > 0) {
-                currentIndex--;
-                updateSlider();
-            }
-        });
-    }
-
-    if (nextBtnDesktop) {
-        nextBtnDesktop.addEventListener('click', function () {
-            const maxIndex = totalCards - cardsPerView;
-            if (currentIndex < maxIndex) {
-                currentIndex++;
-                updateSlider();
-            }
-        });
-    }
-
-    if (prevBtnMobile) {
-        prevBtnMobile.addEventListener('click', function () {
-            if (currentIndex > 0) {
-                currentIndex--;
-                updateSlider();
-            }
-        });
-    }
-
-    if (nextBtnMobile) {
-        nextBtnMobile.addEventListener('click', function () {
-            const maxIndex = totalCards - cardsPerView;
-            if (currentIndex < maxIndex) {
-                currentIndex++;
-                updateSlider();
-            }
-        });
-    }
-
-    let isScrolling = false;
-    slider.addEventListener('scroll', function () {
-        if (isScrolling) return;
-        isScrolling = true;
-        requestAnimationFrame(() => {
+    function nextSlide() {
+        if (currentRealIndex < totalRealCards - cardsPerView) {
+            currentRealIndex++;
+        } else {
+            currentRealIndex = 0;
             const cardWidth = cards[0].offsetWidth;
             const gap = parseInt(getComputedStyle(track).gap) || 20;
-            const scrollPosition = slider.scrollLeft;
-            const newIndex = Math.round(scrollPosition / (cardWidth + gap));
+            slider.scrollLeft = 0;
+        }
+        updateSlider();
+    }
 
-            if (
-                newIndex !== currentIndex &&
-                newIndex >= 0 &&
-                newIndex <= totalCards - cardsPerView
-            ) {
-                currentIndex = newIndex;
-                updateButtons();
-                updateCounter();
+    function prevSlide() {
+        if (currentRealIndex > 0) {
+            currentRealIndex--;
+        } else {
+            currentRealIndex = totalRealCards - cardsPerView;
+            const cardWidth = cards[0].offsetWidth;
+            const gap = parseInt(getComputedStyle(track).gap) || 20;
+            slider.scrollLeft = currentRealIndex * (cardWidth + gap);
+        }
+        updateSlider();
+    }
+
+    function startAutoplay() {
+        if (autoplayInterval) clearInterval(autoplayInterval);
+        autoplayInterval = setInterval(() => {
+            if (!isInteracting) {
+                nextSlide();
             }
-            isScrolling = false;
-        });
+        }, 4000);
+    }
+
+    function stopAutoplay() {
+        if (autoplayInterval) {
+            clearInterval(autoplayInterval);
+            autoplayInterval = null;
+        }
+    }
+
+    const handlePrevClick = () => {
+        stopAutoplay();
+        prevSlide();
+        startAutoplay();
+    };
+
+    const handleNextClick = () => {
+        stopAutoplay();
+        nextSlide();
+        startAutoplay();
+    };
+
+    if (prevBtnDesktop)
+        prevBtnDesktop.addEventListener('click', handlePrevClick);
+    if (nextBtnDesktop)
+        nextBtnDesktop.addEventListener('click', handleNextClick);
+    if (prevBtnMobile) prevBtnMobile.addEventListener('click', handlePrevClick);
+    if (nextBtnMobile) nextBtnMobile.addEventListener('click', handleNextClick);
+
+    slider.addEventListener('mouseenter', () => {
+        isInteracting = true;
+        stopAutoplay();
+    });
+
+    slider.addEventListener('mouseleave', () => {
+        isInteracting = false;
+        startAutoplay();
+    });
+
+    slider.addEventListener('touchstart', () => {
+        isInteracting = true;
+        stopAutoplay();
+    });
+
+    slider.addEventListener('touchend', () => {
+        setTimeout(() => {
+            isInteracting = false;
+            startAutoplay();
+        }, 3000);
     });
 
     let resizeTimeout;
-    window.addEventListener('resize', function () {
+    window.addEventListener('resize', () => {
         clearTimeout(resizeTimeout);
         resizeTimeout = setTimeout(() => {
             const newCardsPerView = getCardsPerView();
             if (newCardsPerView !== cardsPerView) {
                 cardsPerView = newCardsPerView;
-                currentIndex = 0;
+                if (currentRealIndex + cardsPerView > totalRealCards) {
+                    currentRealIndex = totalRealCards - cardsPerView;
+                }
                 updateSlider();
             }
         }, 150);
     });
 
+    startAutoplay();
     setTimeout(() => {
         slider.scrollLeft = 0;
-        updateButtons();
         updateCounter();
     }, 100);
 }
