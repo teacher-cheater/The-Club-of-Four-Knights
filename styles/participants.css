@@ -82,7 +82,6 @@
 .participants__track {
     display: flex;
     gap: 20px;
-    /* padding: 0 16px; */
 }
 
 .participants__card {
